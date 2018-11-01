@@ -7,10 +7,12 @@ function updateSteemArticles(username) {
       if (result[i].author == username || hexo.config.steem_resteems) {
         const tags = JSON.parse(json_metadata).tags || [];
         const date = new Date(`${created}Z`);
-        const content = body.replace(/{(.*)}/g, '｛$1｝').replace(/\|/g, '|');
+        const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
+        // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
+        // console.log(t, tags);
         hexo.post.create({
           slug: `${category}/${author}/${permlink}`,
-          title: title.replace(/"(.*)"/g, '“{$1}”').replace(/"/g, '＂'),
+          title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
           tags,
