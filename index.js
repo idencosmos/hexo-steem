@@ -7,7 +7,7 @@ function updateSteemArticles(username) {
       if (result[i].author == username || hexo.config.steem_resteems) {
         const tags = JSON.parse(json_metadata).tags || [];
         const date = new Date(`${created}Z`);
-        const content = body.replace(/{(.*)}/g, '｛$1｝').replace(/|/g, '|');
+        const content = body.replace(/{(.*)}/g, '｛$1｝').replace(/\|/g, '|');
         hexo.post.create({
           slug: `${category}/${author}/${permlink}`,
           title: title.replace(/"(.*)"/g, '“{$1}”').replace(/"/g, '＂'),
