@@ -3,16 +3,18 @@ var steem = require('steem');
 function updateSteemArticles(username) {
   steem.api.getDiscussionsByBlog({limit:100, tag:username}, function(err, result) {
     for (var i = 0; i < result.length; i++) {
-      var tags = JSON.parse(result[i].json_metadata).tags
+      const { title, body, category, author, permlink, created, json_metadata } = result[i];
       if (result[i].author == username || hexo.config.steem_resteems) {
-        var created = new Date(`${result[i].created}Z`);
+        const tags = JSON.parse(json_metadata).tags || [];
+        const date = new Date(`${created}Z`);
+        const content = body.replace(/{(.*)}/g, '｛$1｝').replace(/|/g, '|');
         hexo.post.create({
-          title: result[i].title,
-          content: result[i].body,
-          slug: `${result[i].category}/${result[i].author}/${result[i].permlink}`,
-          date: created,
-          tags: tags,
-          author: result[i].author
+          slug: `${category}/${author}/${permlink}`,
+          title: title.replace(/"(.*)"/g, '“{$1}”').replace(/"/g, '＂'),
+          content,
+          date,
+          tags,
+          author,
         }, true)
       }
     }
