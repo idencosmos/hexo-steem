@@ -16,4 +16,15 @@
   "dependencies": {
     "steem": "^0.7.2"
   }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anpigon/hexo-steem.git"
+  },
+  "homepage": "https://github.com/axic/ethereumjs-abi",
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
+  }
 }
