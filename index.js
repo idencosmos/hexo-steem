@@ -5,11 +5,12 @@ function updateSteemArticles(username) {
     for (var i = 0; i < result.length; i++) {
       var tags = JSON.parse(result[i].json_metadata).tags
       if (result[i].author == username || hexo.config.steem_resteems) {
+        var created = new Date(`${result[i].created}Z`);
         hexo.post.create({
           title: result[i].title,
           content: result[i].body,
-          slug: result[i].permlink,
-          date: result[i].created,
+          slug: `${result[i].category}/${result[i].author}/${result[i].permlink}`,
+          date: created,
           tags: tags,
           author: result[i].author
         }, true)
@@ -17,8 +18,6 @@ function updateSteemArticles(username) {
     }
   });
 }
-
-
 
 if (hexo.config.steem_users) {
   for (var i = 0; i < hexo.config.steem_users.length; i++) {
