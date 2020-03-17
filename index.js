@@ -1,7 +1,7 @@
 var steem = require('steem');
 
 function updateSteemArticles(username) {
-  steem.api.getDiscussionsByBlog({limit:1000, tag:username}, function(err, result) {
+  steem.api.getDiscussionsByBlog({limit:999, tag:username}, function(err, result) {
     for (var i = 0; i < result.length; i++) {
       const { title, body, category, author, permlink, created, json_metadata } = result[i];
       if (result[i].author == username || hexo.config.steem_resteems) {
