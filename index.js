@@ -1,24 +1,59 @@
 var steem = require('steem');
+var cnt=0;
+var query = {
+  "tag": "",
+  "limit": 100
+};
 
-function updateSteemArticles(username) {
-  steem.api.getDiscussionsByBlog({limit:100, tag:username}, function(err, result) {
-    for (var i = 0; i < result.length; i++) {
+function updateSteemArticles(username) {  
+  query.tag= username;
+  steem.api.getDiscussionsByBlog(query, function(err, result) {
+    for (var i = 0; i < result.length-1; i++) {
       const { title, body, category, author, permlink, created, json_metadata } = result[i];
       if (result[i].author == username || hexo.config.steem_resteems) {
         const tags = JSON.parse(json_metadata).tags || [];
         const date = new Date(`${created}Z`);
         const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
-        // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
-        // console.log(t, tags);
+        let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
+        console.log(t, tags);
         hexo.post.create({
-          slug: `${author}/${category}/${permlink}`,
+          slug: `${category}/${author}/${permlink}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
+          category: 'others'
           tags,
           author,
         }, true)
       }
+    }
+    cnt=result.length;
+    if(cnt<100){
+      const { title, body, category, author, permlink, created, json_metadata } = result[cnt-1];
+      if (result[cnt-1].author == username || hexo.config.steem_resteems) {
+        const tags = JSON.parse(json_metadata).tags || [];
+        const date = new Date(`${created}Z`);
+        const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
+        let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
+        console.log(t, tags);
+        hexo.post.create({
+          slug: `${category}/${author}/${permlink}`,
+          title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
+          content,
+          date,
+          category: 'others'
+          tags,
+          author,
+        }, true)
+      }   
+      return;
+    }
+    else{
+      query.start_author= result[cnt-1].author; 
+      query.start_permlink= result[cnt-1].permlink;
+      console.log(query);
+
+      updateSteemArticles(username); 
     }
   });
 }
