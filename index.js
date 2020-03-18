@@ -24,7 +24,7 @@ function updateSteemArticles(username) {
           category: 'Uncategorized',
           tags,
           author,
-        }, replace: False)
+        }, False)
       }
     }
     cnt=result.length;
@@ -44,7 +44,7 @@ function updateSteemArticles(username) {
           category: 'Uncategorized',
           tags,
           author,
-        }, replace: False)
+        }, False)
       }   
       return;
     }
