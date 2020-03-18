@@ -17,7 +17,7 @@ function updateSteemArticles(username) {
         let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         console.log(t, tags);
         hexo.post.create({
-          slug: `${category}/${author}/${permlink}`,
+          slug: `${created}Z/${category}/${permlink}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
@@ -37,7 +37,7 @@ function updateSteemArticles(username) {
         let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         console.log(t, tags);
         hexo.post.create({
-          slug: `${category}/${author}/${permlink}`,
+          slug: `${created}Z/${category}/${permlink}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
