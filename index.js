@@ -14,8 +14,8 @@ function updateSteemArticles(username) {
         const tags = JSON.parse(json_metadata).tags || [];
         const date = new Date(`${created}Z`);
         const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
-        let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
-        console.log(t, tags);
+        // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
+        // console.log(t, tags);
         hexo.post.create({
           path: 'steemit/' + `${created.replace('T', '-')}-${category}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
@@ -34,8 +34,8 @@ function updateSteemArticles(username) {
         const tags = JSON.parse(json_metadata).tags || [];
         const date = new Date(`${created}Z`);
         const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
-        let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
-        console.log(t, tags);
+        // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
+        // console.log(t, tags);
         hexo.post.create({
           path: 'steemit/' + `${created.replace('T', '-')}-${category}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
