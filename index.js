@@ -21,7 +21,6 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: 'Uncategorized',
           tags,
           author,
         }, true)
@@ -41,7 +40,6 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: 'Uncategorized',
           tags,
           author,
         }, true)
