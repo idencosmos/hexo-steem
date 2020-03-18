@@ -24,7 +24,7 @@ function updateSteemArticles(username) {
           category: 'Uncategorized',
           tags,
           author,
-          path: 'source/_posts/_steemit',
+          path: '_steemit/',
         }, false)
       }
     }
@@ -45,7 +45,7 @@ function updateSteemArticles(username) {
           category: 'Uncategorized',
           tags,
           author,
-          path: 'source/_posts/_steemit',
+          path: '_steemit/',
         }, false)
       }   
       return;
