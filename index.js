@@ -21,10 +21,10 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: tags,
+          category: 'Uncategorized',
           tags,
           author,
-        }, true)
+        }, false)
       }
     }
     cnt=result.length;
@@ -41,10 +41,10 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: tags,
+          category: 'Uncategorized',
           tags,
           author,
-        }, true)
+        }, false)
       }   
       return;
     }
