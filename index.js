@@ -17,11 +17,11 @@ function updateSteemArticles(username) {
         // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         // console.log(t, tags);
         hexo.post.create({
-          path: 'steemit/' + `${created.replace('T', '-')}-${category}`,
+          path: '_steemit/' + `${created.replace('T', '-')}-${category}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“').match(/^[^[]+\|([^]]+)/gm),
+          category: 'Uncategorized',
           tags,
           author,
         }, true)
@@ -37,11 +37,11 @@ function updateSteemArticles(username) {
         // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         // console.log(t, tags);
         hexo.post.create({
-          path: 'steemit/' + `${created.replace('T', '-')}-${category}`,
+          path: '_steemit/' + `${created.replace('T', '-')}-${category}`,
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“').match(/^[^[]+\|([^]]+)/gm),
+          category: 'Uncategorized',
           tags,
           author,
         }, true)
