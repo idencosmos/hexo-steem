@@ -21,7 +21,7 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: [`${category}`, JSON.parse(json_metadata).tags[0]],
+          category: JSON.parse(json_metadata).tags[0],
           tags,
           author,
         }, true)
@@ -41,7 +41,7 @@ function updateSteemArticles(username) {
           title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
           content,
           date,
-          category: [`${category}`, JSON.parse(json_metadata).tags[0]],
+          category: JSON.parse(json_metadata).tags[0],
           tags,
           author,
         }, true)
